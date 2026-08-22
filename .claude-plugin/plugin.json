@@ -1,0 +1,9 @@
+{
+  "name": "bookman",
+  "version": "0.1.0",
+  "description": "Turn your AI into your personal book mentor — a Freirean reading companion that writes one letter (carta) per chapter, with exact references back to the text.",
+  "author": {
+    "name": "Gabriel Henrique da Silva"
+  },
+  "keywords": ["reading", "books", "education", "freire", "note-taking"]
+}

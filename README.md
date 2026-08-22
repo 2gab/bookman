@@ -23,5 +23,9 @@
 >
 > — **The Bookman**, *The Gnome King of Oz* (1927)
 
+<p align="center">
+  <sub>Illustration and quote taken from Ruth Plumly Thompson, <i>The Gnome King of Oz</i> (1927) — out of copyright / public domain in the USA. Used with credit as requested by the source.</sub>
+</p>
+
 
 
