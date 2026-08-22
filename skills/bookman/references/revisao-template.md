@@ -1,10 +1,12 @@
+<!-- Template only. `{{...}}` marks a placeholder to replace with a real value — never copy the double-braces syntax itself into the actual revisao.md. -->
+
 # Revisão — {{Título do livro}}
 
 Memória temporal, não banco de respostas. Cada thread acumula revisitas ao longo do tempo — nunca sobrescreva uma revisita anterior.
 
 ## Thread: {{slug-da-thread}}
 
-- **Origem:** {{tipo: carta | anotação | conversa | comparação entre livros | ideia espontânea}} — {{referência: ex. "carta 3, Cap. 3"}}
+- **Origem:** carta — {{referência: ex. "carta 3, Cap. 3"}} (outros tipos possíveis no futuro: anotação, conversa, comparação entre livros, ideia espontânea — hoje só carta é usada)
 - **Pergunta/tensão:** {{a pergunta aberta ou tensão original que essa thread revisita}}
 
 ### Revisitas

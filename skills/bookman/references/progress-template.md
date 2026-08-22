@@ -1,7 +1,9 @@
+<!-- Template only. `{{...}}` marks a placeholder to replace with a real value — never copy the double-braces syntax itself into the actual progress.md. For a value that genuinely isn't known yet, write a plain marker like "(a classificar)" or "(a definir)" instead. -->
+
 # {{Título do livro}}
 
 - **Autor:** {{nome}}
-- **Tipo de livro:** {{prático | teórico-história | teórico-ciência | teórico-filosofia | teórico-ciência-social | ficção}} — classificado seguindo a Regra 1 (`how_to_read_books`, Cap. 6)
+- **Tipo de livro:** (a classificar na passada inspecional — prático, teórico-história, teórico-ciência, teórico-filosofia, teórico-ciência-social, ou ficção; ver Regra 1, `how_to_read_books` Cap. 6)
 - **Iniciado em:** {{data}}
 - **Última sessão:** {{data}}
 

@@ -1,3 +1,5 @@
+<!-- Template only. `{{...}}` marks a placeholder to replace with a real value — never copy the double-braces syntax itself into the actual carta file. A carta is only written once all five fields have real content; there's no "not yet known" case here. -->
+
 # Carta {{n}} — {{título do capítulo}}
 
 **Livro:** {{título do livro}}, {{autor}}
