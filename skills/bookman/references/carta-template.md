@@ -1,4 +1,4 @@
-<!-- Template only. `{{...}}` marks a placeholder to replace with a real value — never copy the double-braces syntax itself into the actual carta file. A carta is only written once all five fields have real content; there's no "not yet known" case here. -->
+<!-- Template only. `{{...}}` marks a placeholder to replace with a real value — never copy the double-braces syntax itself into the actual carta file. A carta written through the full dialogue has all five fields filled. A carta written on direct request ("cria a carta"), without a dialogue, is a legitimate draft: Tema gerador and Trecho-chave are sourced from the chapter and can be filled by Bookman alone, but Conexão do leitor and Pergunta aberta are the reader's own material — if they haven't given it, write "— ainda não registrada —" in that field rather than inventing something, and record the chapter's status in progress.md as "carta rascunhada" rather than "carta aprovada" until both are filled. -->
 
 # Carta {{n}} — {{título do capítulo}}
 

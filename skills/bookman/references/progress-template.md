@@ -3,6 +3,7 @@
 # {{Título do livro}}
 
 - **Autor:** {{nome}}
+- **Arquivo-fonte:** {{caminho do arquivo, ex. "Capital-Volume-I.pdf" na pasta de trabalho}} — salvo para não perguntar de novo em sessões futuras
 - **Tipo de livro:** (a classificar na passada inspecional — prático, teórico-história, teórico-ciência, teórico-filosofia, teórico-ciência-social, ou ficção; ver Regra 1, `how_to_read_books` Cap. 6)
 - **Iniciado em:** {{data}}
 - **Última sessão:** {{data}}
