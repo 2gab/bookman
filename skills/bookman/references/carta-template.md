@@ -25,4 +25,4 @@
 
 ## Link de volta
 
-{{quando relevante: a pergunta aberta de uma carta anterior que esta carta retoma}}
+{{quando relevante: o que permaneceu vivo na carta anterior e reaparece aqui — preferencialmente a pergunta aberta do leitor, quando registrada; se ainda não registrada (carta anterior em rascunho), a tensão/tema gerador dessa carta, quando há continuidade real de problema, não só palavras em comum; se nenhuma das duas se conecta de verdade, deixe este campo vazio}}
