@@ -166,6 +166,14 @@ Kiwix (offline Wikipedia via a local `.zim` file + `kiwix-serve`) is the leading
 
 The longer-term goal isn't one external source (Wikipedia) — it's several, named individually in the tag (`[CONTEXTO EXTERNO — Wikipedia]`, `[CONTEXTO EXTERNO — <artigo/arquivo específico>]`, and so on), so this can eventually support real research rather than a single quick lookup. When two external sources disagree, that disagreement is itself signal, not noise to resolve — it should be surfaced to the reader as-is (both named, both cited), never quietly collapsed into one version. That's the difference between "pesquisa" and "busca rápida," and it's worth designing for from the start even though only Wikipedia/Kiwix is concretely planned so far.
 
+Context is always a point-in-time query, never persistent state — invoking it doesn't touch a carta, cartão, revisão, or the future Mapa de Leitura, unless the reader explicitly decides to fold something from it into one of those. This is what keeps it from polluting the reading: `/bookman contexto` (or similar) looks something up and answers, it doesn't quietly become part of the record.
+
+Rather than dump everything at once, it should behave like a menu the reader picks from: conceito, contexto histórico, pessoas/autores relacionados, obras relacionadas, contrapontos, linha do tempo, leitura pra aprofundar. Each answer stays labeled by where it came from — `[OBRA]` for anything grounded in the primary text, `[CONTEXTO EXTERNO — <fonte>]` for anything from outside it, `[RECOMENDAÇÕES]` for suggested further reading — so external context is never presented as if the work itself said it.
+
+Two things that belong elsewhere, not duplicated here: "where this shows up in your own reading" is the Mapa de Leitura's job, not Context's — point there instead of reimplementing it. And the "linha do tempo" this produces is the world's historical chronology (1776, 1867, and so on) — a different axis entirely from the reader's own timeline of when *they* encountered an idea, which belongs to `revisao.md` and the map.
+
+Contrapontos need the same discipline as everything else here: Bookman can say a tradition or author approaches the same problem differently, but attributing a specific critique to a specific author — "Marx would say X about this" — requires actually consulting that author's text, the same rule already established for apresenta's cross-book comparisons. Context can widen the world around the work; it must never quietly fill in what the work itself didn't say.
+
 Not building any of this now. The core (Encontro → Diálogo → Cartas → Retorno) is still solidifying, and introducing an external-context layer before that's settled risks turning apresenta or chapter dialogue into "the book says X but Wikipedia says Y" instead of reading.
 
 ## Future scope: Mapa de Leitura (not implemented)
