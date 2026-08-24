@@ -47,6 +47,8 @@ This skill is the router, not the reading companion. It figures out what the rea
 
 `books/<slug-do-livro>/revisao.md` holds the retorno history — modeled on `skills/bookman/references/revisao-template.md`. It's an append-only log of threads, not a database of answers to check against. See "Revisiting a thread (retorno)" below for how it's written to.
 
+`books/<slug-do-livro>/cartoes/<slug-do-cartao>.md` holds one cartão per file, modeled on `skills/bookman/references/cartao-template.md`. A cartão is a different kind of object from a carta — see "Creating a cartão" below — but files under the current book's folder by default, the same way a cartão born mid-reading naturally belongs to that book's context.
+
 Write to `progress.md` after every meaningfully completed step (inspectional pass done, dialogue phase reached, letter drafted, letter approved) — not only at the end of a session. A session can end at any point; the file must always reflect the true current state. Every such write also appends a row to the "Sessões" table at the end of `progress.md` — append-only, one row per event, never overwritten; that table is where "when was the last session" is read from, there's no separate field for it.
 
 When writing any of these files from their templates, replace every `{{...}}` placeholder with a real value — never copy the double-brace syntax itself into the actual file. For a value that genuinely isn't known yet (e.g. book type before the inspectional pass finishes), write a plain marker like "(a classificar)", not the template's placeholder syntax.
@@ -110,6 +112,19 @@ Honor this directly, without asking the reader anything first. The five carta fi
 
 So: write the carta now, filling what's sourced, and leave the reader-only fields as `— ainda não registrada —` (not a bracketed prompt like "a preencher" — this should read as space deliberately left open, not a form field waiting to be filled). Record the chapter's status in `progress.md` as "carta rascunhada," not "carta aprovada." Don't follow up with "me conta sua conexão?" or similar — the reader asked for a carta, not a conversation, and gets exactly that. If they later want to complete it — through a normal chapter dialogue, or by asking to create the carta again once they have something to add — the draft gets its two remaining fields filled and its status moves to "carta aprovada" then, not before.
 
+### Creating a cartão
+
+Triggered by "cria um cartão sobre isso", "quero memorizar isso", "transforma isso num cartão" — always explicit and reader-invoked, never offered by Bookman. No prompt tacked onto the end of a carta asking "quer criar um cartão?" — that would be Bookman steering the reader's behavior, the exact thing "The reader is always in command" exists to prevent. Most cartas never become a cartão, and that's the expected outcome, not a gap.
+
+A cartão is not a smaller carta and doesn't require one. It can come from a carta just written, from something surfaced in a past carta, from a fact encountered directly in the reading with no carta involved at all (a word, a date, a formula), or from context outside the current book — see "Origem" below. Creating one doesn't depend on where it came from, only on the reader deciding, right now, that this specific thing is worth being able to recall without looking it up.
+
+1. Write the Pergunta so it requires actual recall — the reader has to produce an answer, never just recognize one (`how_to_memorize` Cap. 2: free-recall formats like flashcards outperform multiple-choice/recognition).
+2. Write the Resposta as the target of that recall, not a single sentence that must be reproduced verbatim — it's what a correct answer looks like, not a string to match character for character.
+3. Fill Origem with where this came from when there is one (carta N of the current book, a contexto lookup, the future Mapa) — and just "livre" when there isn't, adding whatever context actually exists in prose (e.g. "livre — encontrada lendo o Cap. 2") rather than leaving it bare.
+4. Save under `books/<slug-do-livro>/cartoes/`, modeled on `skills/bookman/references/cartao-template.md`. The Revisitas table starts empty — nothing to log yet at creation time.
+
+This intent only creates a cartão. It does not schedule when to revisit it, does not quiz the reader on existing cartões, and does not touch `revisao.md` — "revisar" still means the retorno session over cartas, a separate thing. How a cartão actually gets practiced and revisited over time is not decided yet; creating the object comes first.
+
 ### Browsing letters (cartas)
 
 Triggered by "cartas", "o que eu já escrevi", "mostra a carta do capítulo X".
@@ -171,6 +186,8 @@ Before presenting a carta or an apresenta output — the two places every real b
 - Never build "the book presenting itself" from Bookman's own general knowledge when the source text isn't accessible — ask the reader where the file is instead. If they genuinely want an unsourced take anyway, say plainly that's what it is before giving one.
 - Never create `progress.md` or `books/<slug>/` as a side effect of "apresenta" alone — that intent is decision support before commitment, and only starting the book (explicit confirmation) writes anything to disk.
 - Never override an explicit reader request with a step Bookman thinks should come first — e.g., refusing "cria a carta do Cap. X" in favor of starting the chapter session flow the reader didn't ask for. The reader's own command wins; see "Writing a carta directly" above for how to honor it without fabricating the carta's content.
+- Never offer to create a cartão after a carta, or after anything else — cartão is invoked, never suggested. Most cartas never become one, and that's correct, not a gap.
+- Never write a cartão's Pergunta as recognition (multiple choice, true/false) instead of recall — `how_to_memorize` Cap. 2 is explicit that recall is what works.
 
 ## Future scope: external context (not implemented)
 
@@ -212,19 +229,15 @@ This is also why carta status matters to the map, once it exists: a **carta rasc
 
 Not building either now — this needs cartas, revisão, and cross-book reading (apresenta's comparisons, syntopical reading per `how_to_read_books` Cap. 20) actually producing real data first. A map with nothing to show is just an empty diagram.
 
-## Future scope: Cartão — memorização (not implemented)
+## Future scope: Cartão review and export (not implemented)
 
-A different unit from everything else in this skill, worth naming precisely so it never gets confused with the others: **carta** is for understanding (open, no correct answer), **revisão** is for transformation (open, evolves, no correct answer), **cartão** would be for memorization (closed, usually *does* have a correct answer, suited to spaced repetition). Three different problems; conflating any two of them would weaken all three.
+Creating a cartão is real today — see "Creating a cartão" above. What's still missing is everything that happens *after* creation: nothing yet decides when a cartão should be revisited, no intent lets the reader practice existing cartões, and `revisao.md` stays untouched by any of this.
 
-A cartão doesn't come from Bookman deciding something is worth memorizing — it comes from the reader deciding that, explicitly, through its own invoked intent ("cria um cartão", "cria um cartão do Cap. X"), the same pattern as everything else in this skill. **Bookman never automatically turns a carta into a cartão.** No offer tacked onto the end of every carta ("quer criar um cartão?") — that would be Bookman steering the reader's behavior again, the exact thing "The reader is always in command" exists to prevent. The reader asks when something is worth memorizing; most cartas will never become one, and that's the expected outcome, not a gap.
-
-**Carta é produzida pelo processo de leitura; cartão é produzido pela intenção de retenção.** No 1:1 relationship between them — a chapter can produce zero cartões or several, and a cartão doesn't have to trace back to a carta at all. `origem` on a cartão is abstract, the same way `origem` already is on a `revisao.md` thread: carta (most common), a future Contexto lookup, the Mapa, or livre (the reader just wants to remember something, no upstream artifact at all). Same discipline as that existing scope note applies here too — abstract in the design, but only build capture for the origins that actually exist yet (carta, livre); Contexto-sourced cartões wait until Contexto itself does.
-
-Export format: plain frente/verso CSV or TSV, importable by Anki or any other spaced-repetition tool via a standard file import — not a generated `.apkg`. Bookman doesn't need to know Anki's internal package format to be useful here, and a flat file keeps this a one-way export with zero runtime dependency on Anki or any other specific tool. `.apkg` generation, if it's ever worth building, is a later problem a text export doesn't block.
+Export format, whenever that gets built: plain frente/verso CSV or TSV, importable by Anki or any other spaced-repetition tool via a standard file import — not a generated `.apkg`. Bookman doesn't need to know Anki's internal package format to be useful here, and a flat file keeps this a one-way export with zero runtime dependency on Anki or any other specific tool.
 
 **Cartões don't represent the reader's thinking; they represent knowledge the reader chose to memorize.** This matters specifically for the future Mapa de Leitura: "I thought X" (carta, revisão) and "I want to remember that X" (cartão) are different kinds of fact about the reader and must never be merged into one line on the map.
 
-Not building this now — same reasoning as the other future-scope sections above: the core needs to be solid before a new kind of artifact gets added on top of it.
+Not building review/scheduling or export yet. The natural next test, once creation has been used in a real reading session (not just drafted examples here), is whatever gap that use reveals — likely "how do I actually practice the cartões I've made," which is exactly the missing piece this section names but doesn't solve.
 
 ## Future scope: practice-oriented books (not implemented)
 
