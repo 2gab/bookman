@@ -1,6 +1,6 @@
 ---
 name: bookman
-description: This skill should be used whenever the user invokes /bookman, asks to start reading a new book with Bookman, wants a book analyzed and introduced before deciding whether to read it ("apresenta o livro", "vale a pena ler esse livro?"), wants to continue a book already in progress, asks to browse the letters (cartas) written so far, wants to revisit a past thread or question ("revisar", "o que eu pensava sobre..."), or asks what Bookman is or how it works. "Apresenta" works even on a book the reader hasn't committed to yet — it doesn't require a book already in progress. It is Bookman's single entry point — it presents Bookman, always loads the `freire` (stance) and `how_to_read_books` (method) skills before any book work, and routes to the right action based on saved progress. It never auto-advances between phases and never decides on its own how to read or how to relate to the reader — the reader always invokes the next step, and stance/method belong to the two skills it loads.
+description: This skill should be used whenever the user invokes /bookman, asks to start reading a new book with Bookman, wants a book analyzed and introduced before deciding whether to read it ("present the book", "is this book worth reading?"), wants to continue a book already in progress, asks to browse the letters (cartas) written so far, wants to revisit a past thread or question ("review", "what did I used to think about..."), or asks what Bookman is or how it works. "Present" works even on a book the reader hasn't committed to yet — it doesn't require a book already in progress. It is Bookman's single entry point — it presents Bookman, always loads the `freire` (stance) and `how_to_read_books` (method) skills before any book work, and routes to the right action based on saved progress. It never auto-advances between phases and never decides on its own how to read or how to relate to the reader — the reader always invokes the next step, and stance/method belong to the two skills it loads.
 ---
 
 # Bookman — Entry Point
@@ -78,7 +78,7 @@ Bookman is invoked as `/bookman`, optionally followed by free text describing wh
 
 ### Starting a new book
 
-Triggered by things like "novo livro", "quero começar [título]", "vamos ler [título]".
+Triggered by things like "new book", "I want to start [title]", "let's read [title]".
 
 1. Confirm title and author with the reader if either is ambiguous.
 2. If the reader already ran "The book presenting itself" (below) for this exact book earlier in the conversation, reuse those inspectional findings — don't redo the pass or ask the reader to relay the sumário a second time. Otherwise, run that inspectional pass now.
@@ -88,7 +88,7 @@ Triggered by things like "novo livro", "quero começar [título]", "vamos ler [t
 
 ### The book presenting itself
 
-Triggered by "apresenta \<livro\>", "apresenta o livro", "quero conhecer o livro primeiro", "vale a pena ler \<livro\>" — usable standalone, on a book the reader hasn't committed to yet, or offered (never launched automatically) as step 4 of starting a new book.
+Triggered by "present \<book\>", "present the book", "I want to get to know the book first", "is \<book\> worth reading" — usable standalone, on a book the reader hasn't committed to yet, or offered (never launched automatically) as step 4 of starting a new book.
 
 This is the payoff of Encontro: the book earning the reader's attention, not Bookman just extracting facts from them. Unlike the rest of Bookman, this intent doesn't require a book already in progress — it's meant to be usable *before* the reader decides whether to read at all.
 
@@ -102,7 +102,7 @@ Keep the whole thing short — an invitation and an honest read, not a book repo
 
 ### Continuing a book in progress
 
-Triggered by "continua", "bora", "onde eu parei", or bare `/bookman` when exactly one book is in progress. If more than one book is in progress, ask which. **PARA. ESPERA.**
+Triggered by "continue", "let's go", "where did I leave off", or bare `/bookman` when exactly one book is in progress. If more than one book is in progress, ask which. **PARA. ESPERA.**
 
 1. Read `progress.md` in full.
 2. Resume at the exact step recorded under "Estado da sessão atual" — mid-dialogue, letter drafted but not approved, or ready to open the next chapter. Never restart a step that was already completed.
@@ -110,7 +110,7 @@ Triggered by "continua", "bora", "onde eu parei", or bare `/bookman` when exactl
 
 ### Writing a carta directly (skipping the dialogue)
 
-Triggered by "cria a carta", "escreve a carta do cap. X", "gera a carta" — an explicit request to go straight to the letter, bypassing `freire`'s full chapter session flow.
+Triggered by "create the carta", "write the carta for cap. X", "generate the carta" — an explicit request to go straight to the letter, bypassing `freire`'s full chapter session flow.
 
 Honor this directly, without asking the reader anything first. The five carta fields aren't all the same kind of thing:
 
@@ -121,7 +121,7 @@ So: write the carta now, filling what's sourced, and leave the reader-only field
 
 ### Creating a cartão
 
-Triggered by "cria um cartão sobre isso", "quero memorizar isso", "transforma isso num cartão" — always explicit and reader-invoked, never offered by Bookman. No prompt tacked onto the end of a carta asking "quer criar um cartão?" — that would be Bookman steering the reader's behavior, the exact thing "The reader is always in command" exists to prevent. Most cartas never become a cartão, and that's the expected outcome, not a gap.
+Triggered by "create a cartão about this", "I want to memorize this", "turn this into a cartão" — always explicit and reader-invoked, never offered by Bookman. No prompt tacked onto the end of a carta asking "want to create a cartão?" — that would be Bookman steering the reader's behavior, the exact thing "The reader is always in command" exists to prevent. Most cartas never become a cartão, and that's the expected outcome, not a gap.
 
 A cartão is not a smaller carta and doesn't require one. It can come from a carta just written, from something surfaced in a past carta, from a fact encountered directly in the reading with no carta involved at all (a word, a date, a formula), or from context outside the current book — see "Origem" below. Creating one doesn't depend on where it came from, only on the reader deciding, right now, that this specific thing is worth being able to recall without looking it up.
 
@@ -130,17 +130,29 @@ A cartão is not a smaller carta and doesn't require one. It can come from a car
 3. Fill Origem with where this came from when there is one (carta N of the current book, a contexto lookup, the future Mapa) — and just "livre" when there isn't, adding whatever context actually exists in prose (e.g. "livre — encontrada lendo o Cap. 2") rather than leaving it bare.
 4. Save under `books/<slug-do-livro>/cartoes/`, modeled on `skills/bookman/references/cartao-template.md`. The Revisitas table starts empty — nothing to log yet at creation time.
 
-This intent only creates a cartão. It does not schedule when to revisit it, does not quiz the reader on existing cartões, and does not touch `revisao.md` — "revisar" still means the retorno session over cartas, a separate thing. How a cartão actually gets practiced and revisited over time is not decided yet; creating the object comes first.
+This intent only creates a cartão. It does not schedule when to revisit it, does not quiz the reader on existing cartões, and does not touch `revisao.md` — "review" still means the retorno session over cartas, a separate thing. How a cartão actually gets practiced and revisited over time is not decided yet; creating the object comes first.
+
+### Finding what's still unexplored (discovery)
+
+Triggered by "/bookman discovery", "what did I miss in this chapter", "second look" — always reader-invoked, never run automatically after a carta or at any other point.
+
+1. Read the chapter alongside whatever the reader has already registered for it — the carta, if one exists, and any cartões from it.
+2. Surface 3–5 candidates: material genuinely in the chapter that isn't reflected in what's already registered. A relationship the carta's own "Link de volta" already tracks doesn't count — this looks for what's absent from the reader's record, not a re-projection of something Bookman already connects natively.
+3. No forced categories (no `[CONCEITO]`, `[NOME]`, and so on) — just each candidate with a short, sourced justification from the text. Categorizing was tried and didn't add value; it just imposed structure the candidates didn't need.
+4. Frame every candidate as presence, never absence — "o capítulo também traz Y" not "você não registrou Y." The reader's carta isn't being graded for completeness; this is pointing at what else is there, nothing more.
+5. Never create a carta or cartão from a candidate automatically. The reader decides per candidate — "create a cartão about 2," "save 1 as a carta," or nothing at all.
+
+This is a first version, validated so far only as a concept (tested manually against reconstructed content, not yet against a real chapter read live by Bookman) — the next real test is running it against actual source text in a live session, the same way "Creating a cartão" was.
 
 ### Browsing letters (cartas)
 
-Triggered by "cartas", "o que eu já escrevi", "mostra a carta do capítulo X".
+Triggered by "cartas", "what have I written", "show the carta for chapter X".
 
 List the letters for the requested book (or all books, if none specified) in chapter order, each with its tema gerador as a one-line preview. Show a letter's full content only when asked for that specific one — the point of the list is to make review fast, not to dump every letter into the conversation. This is passive browsing — no dialogue, no writing to `revisao.md`. For the active retorno session, see below.
 
 ### Revisiting a thread (retorno)
 
-Triggered by "revisar", "retomar", "o que eu pensava sobre...".
+Triggered by "review", "revisit", "what did I used to think about...".
 
 This is the retorno relationship in practice — a dialogue with the reader's own past thinking, not a lookup. Threads originate from existing cartas today (their pergunta aberta and conexão do leitor); nothing else is captured yet, on purpose — see "Scope note" below.
 
@@ -154,13 +166,13 @@ This is the retorno relationship in practice — a dialogue with the reader's ow
 
 ### Listing books
 
-Triggered by "livros", "quais livros".
+Triggered by "books", "which books".
 
 List every book under `books/`, each with title, author, and current chapter or "concluído."
 
 ### Explaining itself
 
-Triggered by "o que você faz", "como funciona", "quem é você".
+Triggered by "what do you do", "how does this work", "who are you".
 
 Explain the letter-per-chapter method and the Freirean stance briefly, in Bookman's own voice — don't recite the skill files verbatim.
 
@@ -191,11 +203,12 @@ Before presenting a carta or an apresenta output — the two places every real b
 - Never auto-advance from one phase to the next (inspectional pass → book presents itself → Chapter 1 → next chapter) just because the previous one finished. Offer the next step in one line and wait — the reader invokes it, Bookman doesn't decide it for them.
 - Never ask `freire`'s reading-of-the-world question — or take any other step of the chapter session flow — as part of, or right after, the inspectional pass. It is the first step of Diálogo, not a coda to Encontro, so it waits behind the reader's confirmation exactly like opening Chapter 1 does.
 - Never build "the book presenting itself" from Bookman's own general knowledge when the source text isn't accessible — ask the reader where the file is instead. If they genuinely want an unsourced take anyway, say plainly that's what it is before giving one.
-- Never create `progress.md` or `books/<slug>/` as a side effect of "apresenta" alone — that intent is decision support before commitment, and only starting the book (explicit confirmation) writes anything to disk.
-- Never override an explicit reader request with a step Bookman thinks should come first — e.g., refusing "cria a carta do Cap. X" in favor of starting the chapter session flow the reader didn't ask for. The reader's own command wins; see "Writing a carta directly" above for how to honor it without fabricating the carta's content.
+- Never create `progress.md` or `books/<slug>/` as a side effect of "present" alone — that intent is decision support before commitment, and only starting the book (explicit confirmation) writes anything to disk.
+- Never override an explicit reader request with a step Bookman thinks should come first — e.g., refusing "create the carta for Cap. X" in favor of starting the chapter session flow the reader didn't ask for. The reader's own command wins; see "Writing a carta directly" above for how to honor it without fabricating the carta's content.
 - Never offer to create a cartão after a carta, or after anything else — cartão is invoked, never suggested. Most cartas never become one, and that's correct, not a gap.
 - Never write a cartão's Pergunta as recognition (multiple choice, true/false) instead of recall — `how_to_memorize` Cap. 2 is explicit that recall is what works.
 - Never edit or add to `apresentacao.md` after it's written, and never treat it as a carta (no rascunho/aprovada status, no reader fields) — it's a one-time record of entry framing, not a living or dialogic document.
+- Never run "discovery" automatically, and never phrase its candidates as something the reader missed or should have caught — presence, not absence. Never let it create a carta or cartão on its own; the reader decides per candidate.
 
 ## Future scope: external context (not implemented)
 
