@@ -178,19 +178,36 @@ Explain the letter-per-chapter method and the Freirean stance briefly, in Bookma
 
 ## Self-review before delivering
 
-Before presenting a carta or an apresenta output — the two places every real bug found in this skill so far has actually shown up — run this check silently against what's about to be shown. It's an internal pass, never a checklist the reader sees.
+One rule underneath all four checklists below: **if something can't be sustained, remove it or mark it unverified — never fill by plausibility.** This is the same sourcing discipline that already governs the rest of this skill, just applied as a check before delivering instead of a correction after getting it wrong.
 
-- O capítulo (ou o livro, no caso de apresenta) foi realmente lido, ou isso está sendo completado por familiaridade genérica com a obra?
+This isn't a bureaucratic audit run on every interaction — it's a quick, silent, internal pass against whichever object is actually being created or edited, using that object's own criteria below. Never shown to the reader as a checklist.
+
+### Carta
+
+- O capítulo foi realmente lido, ou isso está sendo completado por familiaridade genérica com a obra?
 - Todo trecho citado existe de verdade no texto, com página/seção correta?
-- Toda afirmação sobre o que a obra diz é sustentada por ela, não só plausível?
-- Alguma informação de fora da obra está sendo apresentada como se viesse dela?
-- Alguma conexão ou experiência do leitor foi inventada, em vez de deixada como `— ainda não registrada —`?
+- Alguma conexão do leitor ou pergunta aberta foi inventada, em vez de deixada como `— ainda não registrada —` (quando o caminho é o rascunho direto)?
 - A pergunta aberta é genuinamente aberta, não uma pergunta retórica já resolvida no texto?
-- O "Link de volta", se presente, tem continuidade real de problema — não só vocabulário em comum entre duas cartas?
-- Se houver "Link de volta", a carta referenciada existe, pertence ao mesmo livro, e é anterior à carta atual — nunca a própria carta?
-- A voz está correta — primeira pessoa (a obra) e terceira pessoa (Bookman) não vazaram uma pra outra?
+- O "Link de volta", se presente: tem continuidade real de problema — não só vocabulário em comum — e a carta referenciada existe, pertence ao mesmo livro, e é anterior à carta atual, nunca a própria carta?
 
-**Se algo não puder ser sustentado, remove ou marca como não verificado — nunca preenche por plausibilidade.** Isso não é um passo extra pra desacelerar Bookman; é a mesma disciplina de sourcing que já vale pro resto do skill, só aplicada como checagem antes de entregar em vez de depois de errar.
+### Apresentação
+
+- A apresentação foi construída a partir da leitura real do livro (a passada inspecional), não de familiaridade genérica com a obra?
+- A voz está correta — primeira pessoa (a obra) e terceira pessoa (Bookman) não vazaram uma pra outra?
+- Qualquer comparação com outro livro em `books/` é sourced ou está explicitamente marcada como não verificada?
+- `apresentacao.md`, quando escrito, preserva fielmente o que foi de fato apresentado — não é uma nova síntese produzida depois, retrospectivamente melhorada?
+
+### Cartão
+
+- A pergunta exige recuperação ativa e resposta livre — nunca reconhecimento (múltipla escolha, sim/não)?
+- A resposta é um alvo suficiente pra avaliar a recuperação, não uma frase única que precisa ser reproduzida ao pé da letra?
+- O cartão não inventa informação além do que a origem de fato sustenta?
+
+### Discovery
+
+- Os candidatos são material do capítulo genuinamente ausente do que o leitor já registrou — não uma reorganização de uma relação que a carta (ex: "Link de volta") já cobre?
+- Cada candidato está enquadrado como presença ("o capítulo também traz X"), nunca como ausência ou cobrança ("você não registrou X")?
+- Nenhum candidato virou carta ou cartão sozinho — isso é sempre decisão do leitor.
 
 ## What never to do
 
