@@ -2,7 +2,8 @@
 
 # Cartão — {{identificação curta}}
 
-**Origem:** {{carta N do livro X | contexto | mapa | livre}} — metadado de genealogia, não parte da pergunta; o cartão precisa funcionar isolado, sem depender de quem lê saber de onde ele veio.
+**Domínio:** {{vocabulário | bibliográfico | conceito | ...}} — sobre que espécie de conhecimento é este cartão; lista aberta, cresce conforme surgir um domínio real que os existentes não cobrem (ver "Future scope: cartão types").
+**Origem:** {{carta N do livro X | contexto | Brain | entidade "Nome" (entidades.md) | livre}} — metadado de genealogia, não parte da pergunta; o cartão precisa funcionar isolado, sem depender de quem lê saber de onde ele veio.
 **Criado em:** {{data}}
 
 ## Pergunta

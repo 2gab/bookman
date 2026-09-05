@@ -1,6 +1,6 @@
 ---
 description: Bookman — Freirean reading companion. One letter per chapter.
-argument-hint: [new <title> | continue | present | cartas | review | books | discovery]
+argument-hint: [new <title> | continue | present | cartas | review | books | discovery | practice | metadados | path | entidades]
 ---
 
 @${CLAUDE_PLUGIN_ROOT}/skills/bookman/SKILL.md
