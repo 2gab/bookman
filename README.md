@@ -14,6 +14,10 @@
 </p>
 
 <p align="center">
+  <i>Book-oriented learning.</i>
+</p>
+
+<p align="center">
   <i>Read once. Learn forever.</i>
 </p>
 
@@ -26,6 +30,3 @@
 <p align="center">
   <sub>Illustration and quote taken from Ruth Plumly Thompson, <i>The Gnome King of Oz</i> (1927) — out of copyright / public domain in the USA. Used with credit as requested by the source.</sub>
 </p>
-
-
-
