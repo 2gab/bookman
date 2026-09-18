@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "bookman-local",
+  "description": "Local marketplace for the bookman plugin — Freirean reading companion.",
+  "owner": {
+    "name": "Gabriel Henrique da Silva"
+  },
+  "plugins": [
+    {
+      "name": "bookman",
+      "description": "Turn your AI into your personal book mentor — a Freirean reading companion that writes one letter (carta) per chapter, with exact references back to the text.",
+      "author": {
+        "name": "Gabriel Henrique da Silva"
+      },
+      "source": "./"
+    }
+  ]
+}
